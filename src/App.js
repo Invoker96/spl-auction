@@ -1,25 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import banner from './images/Banner.png';
 import './App.css';
+import Header from './components/Header/Header';
+import PlayerForm from './components/PlayerForm/PlayerForm';
+import TeamStatus from './components/TeamStatus/TeamStatus';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <Header/>
+        <p className="bg-logo">
+          <img className="img-logo" src={ banner } alt="logo"/>
+        </p>
+        <PlayerForm name='Siddhartha Nanda' basePrice="400" bidPrice="800" />
+        <TeamStatus />
       </div>
     );
   }
