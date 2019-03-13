@@ -5,17 +5,18 @@
 export const config = {
   AUCTION: {
     TITLE: "SPL CRICKET AUCTION 2019",
-    TITLE1: "Testing"
   },
   PLAYER_STATUS: {
     SOLD: "SOLD",
     UNSOLD: "UNSOLD",
+    SLOT: "RESLOT"
   },
   FORMTITLE: {
     PLAYER_DETAILS: "PLAYER DETAILS",
     SQUAD: "CURRENT TEAM SQUAD",
   },
   TEAM: {
+    SELECT: "-Select-",
     TEAM1: "CSK",
     TEAM2: "KXIP",
     TEAM3: "MI",

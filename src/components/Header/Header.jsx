@@ -7,8 +7,8 @@ function Header(props) {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="App-title">{config.AUCTION.TITLE}</div>
-        <img src={live} className="App-live" alt="live-logo" />
+        <div className="App-title">{ config.AUCTION.TITLE }</div>
+        <img src={live} className="App-live" alt="live-logo"/>
       </header>
     </div>
   );

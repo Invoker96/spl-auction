@@ -11,6 +11,8 @@
 }
 
 .player-field-layout {
+  /* background: none; */
+  color: black;
   padding: 2px;
   padding-left: 5px;
   margin-left: 2px;
