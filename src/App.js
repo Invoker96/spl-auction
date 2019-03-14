@@ -20,6 +20,10 @@ class App extends Component {
     },
   };
 
+ /**
+ * @function nextPlayer
+ * @summary This function finds the player who is not sold yet and set the state of Selected player to the current player.
+ */
   nextPlayer = () => {
     const { playerList } = this.state;
     const nxtPlayer = playerList.find(player => player.team === undefined);
@@ -30,10 +34,19 @@ class App extends Component {
     }
   };
 
+ /**
+ * @function onTeamSelected
+ * @summary This function updates the selectedTeam state with the selectedTeam from dropdown passed as an argument.
+ * @param selectedTeam
+ */
   onTeamSelected = selectedTeam => {
     this.setState({ selectedTeam });
   };
 
+ /**
+ * @function reAuciton
+ * @summary This function changes the team of unsold players to undefined and then updating the state to the playerList.
+ */
   reAuciton = () => {
     const { playerList } = this.state;
     const currentPlayerList = playerList;
@@ -56,6 +69,13 @@ class App extends Component {
     }
   };
 
+ /**
+ * @function soldPlayer
+ * @summary This function sets the player to sold or unsold based on the isSold flag and setting the state of new team object.
+ * It reduces the current credit of the particular team based on the bid price of the player.
+ * @param isSold This flag checks whether the player is sold or not based on the flag passed.
+ * @param price Price is the bid price at which that particular player is sold to the team
+ */
   soldPlayer = (isSold, price) => {
     const { selectedPlayer, playerList, selectedTeam, teams } = this.state;
 
