@@ -133,7 +133,7 @@ const playerDetails = [
     availablity: "30 March, 6-13-20 April",
     description: "Good middle-order batsman",
     team: undefined
-  },
+  }
 ];
 
 export default playerDetails;

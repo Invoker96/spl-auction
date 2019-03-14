@@ -10,21 +10,23 @@ import { config } from "./utils/config/config";
 class App extends Component {
   state = {
     playerList: playerDetails,
-    selectedPlayer: playerDetails[0],
-    selectedTeam: null
+    selectedPlayer: playerDetails.find(player => player.team === undefined),
+    selectedTeam: null,
+    teams: {
+      [config.TEAM.TEAM1]: config.CURRENT_BALANCE,
+      [config.TEAM.TEAM2]: config.CURRENT_BALANCE,
+      [config.TEAM.TEAM3]: config.CURRENT_BALANCE,
+      [config.TEAM.TEAM4]: config.CURRENT_BALANCE
+    },
+    statusFlag : false
   };
 
-  componentDidMount() {}
-
-  currentPlayer = () => {
-    const { selectedPlayer, playerList } = this.state;
-    const currentPlayerList = playerList;
-    const index = currentPlayerList.findIndex(
-      player => player.id === selectedPlayer.id
-    );
-    if (selectedPlayer.team !== undefined && index >= 0 && index < currentPlayerList.length - 1) {
+  nextPlayer = () => {
+    const { playerList } = this.state;
+    const nxtPlayer = playerList.find(player => player.team === undefined);
+    if (nxtPlayer) {
       this.setState({
-        selectedPlayer: currentPlayerList[index + 1]
+        selectedPlayer: nxtPlayer,
       });
     }
   };
@@ -34,22 +36,32 @@ class App extends Component {
   };
 
   reAuciton = () => {
-    // const { playerList } = this.state;
-    // const unSoldPlayerList = Object.assign({}, playerList);
-    // // const index = unSoldPlayerList.findIndex(
-    // //   player => player.id === unSoldPlayerList.id
-    // // );
+    const { playerList } = this.state;
+    const currentPlayerList = playerList;
+    const unAssignedPLayer = currentPlayerList.find(
+      player => player.team === undefined
+    );
+    if (!unAssignedPLayer) {
+      const newPlayerList = [...playerList];
+      newPlayerList.forEach(player => {
+        if (player.team === config.TEAM.UNSOLD_PLAYERS) {
+          player.team = undefined;
+        }
+      });
+      this.setState(
+        {
+          playerList: newPlayerList
+        },
+        () => this.nextPlayer()
+      );
+    }
+  };
 
-    // unSoldPlayerList.team = config.TEAM.UNSOLD_PLAYERS;
-    // this.setState({
-    //   playerList: unSoldPlayerList
-    // });
-  }
-
-  soldPlayer = (isSold = true) => {
-    const { selectedPlayer, playerList, selectedTeam } = this.state;
+  soldPlayer = (isSold, price) => {
+    const { selectedPlayer, playerList, selectedTeam, teams } = this.state;
 
     const newPlayerList = [...playerList];
+    const newTeams = { ...teams };
 
     const index = newPlayerList.findIndex(
       player => player.id === selectedPlayer.id
@@ -57,18 +69,18 @@ class App extends Component {
 
     newPlayerList[index].team = isSold
       ? selectedTeam
-      :  config.TEAM.UNSOLD_PLAYERS;
-    this.setState({
-      playerList: newPlayerList
-    });
+      : config.TEAM.UNSOLD_PLAYERS;
 
-    // let playerDetails = Object.assign({}, this.state.selectedPlayer);
-    // playerDetails.team = selectedTeam;
-    // this.setState({
-    //   selectedPlayer: playerDetails,
-    //   BuyerTeam: selectedTeam
-    //   // selectedPlayer: { BuyerTeam: selectedTeam}
-    // });
+    newTeams[selectedTeam] = newTeams[selectedTeam] - price;
+    if (( newTeams[selectedTeam] > price && price !== 0 && selectedPlayer.basePrice < price) || !isSold) {
+      this.setState({
+        playerList: newPlayerList,
+        teams: newTeams,
+        statusFlag: true
+      });
+    } else {
+      alert("Wrong Input");
+    }
   };
 
   render() {
@@ -80,12 +92,15 @@ class App extends Component {
         </p>
         <PlayerForm
           selectedPlayer={this.state.selectedPlayer}
-          onNextPlayer={this.currentPlayer}
+          onNextPlayer={this.nextPlayer}
           onteamSelected={this.onTeamSelected}
           onSoldPlayer={this.soldPlayer}
           reAuciton={this.reAuciton}
         />
-        <TeamStatus playerList={this.state.playerList}/>
+        <TeamStatus
+          playerList={this.state.playerList}
+          teams={this.state.teams}
+        />
       </div>
     );
   }

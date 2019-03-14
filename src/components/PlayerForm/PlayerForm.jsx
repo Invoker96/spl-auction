@@ -4,6 +4,8 @@ import player from "../../images/player.jpg";
 import { config } from "../../utils/config/config";
 
 class PlayerForm extends Component {
+  state = { bidPrice: 0 };
+
   nextPlayer = event => {
     event.preventDefault();
     this.props.onNextPlayer();
@@ -15,7 +17,16 @@ class PlayerForm extends Component {
     this.props.onteamSelected(selectedTeam);
   };
 
+  updateBidPrice = event => {
+    const bidPrice = event.target.value;
+    this.setState({
+      bidPrice
+    });
+  };
+
   render() {
+    const selectedPlayer = this.props.selectedPlayer;
+
     return (
       <div className="player-form-container">
         <form
@@ -70,6 +81,8 @@ class PlayerForm extends Component {
                 id="bidPrice"
                 name="bidPrice"
                 className="player-field-layout"
+                onChange={this.updateBidPrice}
+                value={this.state.bidPrice}
               />
             </p>
             <p className="player-img-container">
@@ -108,25 +121,20 @@ class PlayerForm extends Component {
             <button
               type="button"
               className="button"
-              onClick={() => this.props.onSoldPlayer(true)}
+              disabled={selectedPlayer.team ? true : false }
+              onClick={() => this.props.onSoldPlayer(true, this.state.bidPrice)}
             >
               {config.PLAYER_STATUS.SOLD}
             </button>
             <button
               type="button"
               className="button"
-              onClick={() => this.props.onSoldPlayer(false)}
+              disabled={selectedPlayer.team ? true : false }
+              onClick={() => this.props.onSoldPlayer(false, 0)}
             >
               {config.PLAYER_STATUS.UNSOLD}
             </button>
-            {/* <button
-              type="button"
-              className="button"
-              onClick={() => this.props.onSoldPlayer(false)}
-            >
-              {config.PLAYER_STATUS.SLOT}
-            </button> */}
-            <span onClick={() => this.props.reAuciton()}>&#9785;</span>
+            <span className="restore-btn" onClick={() => this.props.reAuciton()}>&#9785;</span>
             <input type="submit" value="Next" />
           </fieldset>
         </form>
