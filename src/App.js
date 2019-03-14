@@ -67,7 +67,7 @@ class App extends Component {
     );
 
     newTeams[selectedTeam] = newTeams[selectedTeam] - price;
-    if (( newTeams[selectedTeam] > price && price !== 0 && selectedPlayer.basePrice < price) || !isSold) {
+    if (( newTeams[selectedTeam] > price && price !== 0 && selectedPlayer.basePrice <= price) || !isSold) {
       newPlayerList[index].team = isSold
       ? selectedTeam
       : config.TEAM.UNSOLD_PLAYERS;
