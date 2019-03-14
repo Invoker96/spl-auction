@@ -98,6 +98,7 @@ class App extends Component {
           playerList={this.state.playerList}
           teams={this.state.teams}
         />
+       <span className="copy-right">&#169;<strong>Siddhartha Nanda</strong></span>
       </div>
     );
   }
