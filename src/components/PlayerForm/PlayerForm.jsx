@@ -6,17 +6,28 @@ import { config } from "../../utils/config/config";
 class PlayerForm extends Component {
   state = { bidPrice: 0 };
 
+ /**
+ * @function nextPlayer
+ * @summary This function prevents the default action and calls the parent function onNextPlayer().
+ */
   nextPlayer = event => {
     event.preventDefault();
     this.props.onNextPlayer();
   };
 
+ /**
+ * @function teamSelected
+ * @summary This function fetches the target value from the dropdown and calls the parent function onNextPlayer() with selectedTeam value.
+ */
   teamSelected = event => {
     const selectedTeam = event.target.value;
-    console.log(selectedTeam);
     this.props.onteamSelected(selectedTeam);
   };
 
+ /**
+ * @function updateBidPrice
+ * @summary This function fetches the bid value and set the state of bidPrice with the input value.
+ */
   updateBidPrice = event => {
     const bidPrice = event.target.value;
     this.setState({
