@@ -18,7 +18,6 @@ class App extends Component {
       [config.TEAM.TEAM3]: config.CURRENT_BALANCE,
       [config.TEAM.TEAM4]: config.CURRENT_BALANCE
     },
-    statusFlag : false
   };
 
   nextPlayer = () => {
@@ -67,16 +66,14 @@ class App extends Component {
       player => player.id === selectedPlayer.id
     );
 
-    newPlayerList[index].team = isSold
-      ? selectedTeam
-      : config.TEAM.UNSOLD_PLAYERS;
-
     newTeams[selectedTeam] = newTeams[selectedTeam] - price;
     if (( newTeams[selectedTeam] > price && price !== 0 && selectedPlayer.basePrice < price) || !isSold) {
+      newPlayerList[index].team = isSold
+      ? selectedTeam
+      : config.TEAM.UNSOLD_PLAYERS;
       this.setState({
         playerList: newPlayerList,
         teams: newTeams,
-        statusFlag: true
       });
     } else {
       alert("Wrong Input");
