@@ -2,7 +2,7 @@ const playerDetails = [
   {
     id: 1,
     name: "Siddhartha Nanda",
-    basePrice: "450",
+    basePrice: 450,
     skills: "BATSMAN | ALL-Rounder",
     availablity: "30 March, 6-13-20 April",
     description: "Good middle-order batsman",
@@ -11,7 +11,7 @@ const playerDetails = [
   {
     id: 2,
     name: "Girish Mehta",
-    basePrice: "300",
+    basePrice: 300,
     skills: "BATSMAN",
     availablity: "6-13-20 April",
     description: "Top order batsman",
@@ -20,7 +20,7 @@ const playerDetails = [
   {
     id: 3,
     name: "Mukul Gupta",
-    basePrice: "350",
+    basePrice: 350,
     skills: "ALL-Rounder",
     availablity: "30 March, 6 April",
     description: "Bat well",
@@ -29,7 +29,7 @@ const playerDetails = [
   {
     id: 4,
     name: "Nishant Goyal",
-    basePrice: "300",
+    basePrice: 300,
     skills: "ALL-Rounder",
     availablity: "30 March, 6-13 April",
     description: "Middle Order Batsman",
@@ -38,7 +38,7 @@ const playerDetails = [
   {
     id: 5,
     name: "Tarun Goyal",
-    basePrice: "250",
+    basePrice: 250,
     skills: "Bowler",
     availablity: "30 March, 6-20 April",
     description: "Opening Bowler",
@@ -47,7 +47,7 @@ const playerDetails = [
   {
     id: 6,
     name: "Himalaya Batra",
-    basePrice: "300",
+    basePrice: 300,
     skills: "BATSMAN",
     availablity: "13-20 April",
     description: "Top order batsman",
@@ -56,7 +56,7 @@ const playerDetails = [
   {
     id: 7,
     name: "Prabhjot Singh",
-    basePrice: "250",
+    basePrice: 250,
     skills: "ALL-Rounder",
     availablity: "30 March, 20 April",
     description: "Bat well",
@@ -65,7 +65,7 @@ const playerDetails = [
   {
     id: 8,
     name: "Sandeep Kumar",
-    basePrice: "450",
+    basePrice: 450,
     skills: "ALL-Rounder",
     availablity: "30 March, 6-20 April",
     description: "Middle Order Batsman",
@@ -74,7 +74,7 @@ const playerDetails = [
   {
     id: 9,
     name: "Shobhit Sarin",
-    basePrice: "300",
+    basePrice: 300,
     skills: "Bowler",
     availablity: "6-20 April",
     description: "Opening Bowler",
@@ -83,7 +83,7 @@ const playerDetails = [
   {
     id: 10,
     name: "Shubham Bhardwaj",
-    basePrice: "450",
+    basePrice: 450,
     skills: "BATSMAN | ALL-Rounder",
     availablity: "20 April",
     description: "Good middle-order batsman",
@@ -92,7 +92,7 @@ const playerDetails = [
   {
     id: 12,
     name: "Sanjeev Kumar",
-    basePrice: "350",
+    basePrice: 350,
     skills: "BATSMAN",
     availablity: "30 March, 20 April",
     description: "Top order batsman",
@@ -101,7 +101,7 @@ const playerDetails = [
   {
     id: 13,
     name: "Harnoor Bandesh",
-    basePrice: "300",
+    basePrice: 300,
     skills: "ALL-Rounder",
     availablity: "30 March",
     description: "Bat well",
@@ -110,7 +110,7 @@ const playerDetails = [
   {
     id: 14,
     name: "Vikrant Sawich",
-    basePrice: "350",
+    basePrice: 350,
     skills: "ALL-Rounder",
     availablity: "20 April",
     description: "Middle Order Batsman",
@@ -119,7 +119,7 @@ const playerDetails = [
   {
     id: 15,
     name: "Abdul Quadir",
-    basePrice: "350",
+    basePrice: 350,
     skills: "Bowler",
     availablity: "30 March, 13-20 April",
     description: "Opening Bowler",
@@ -128,7 +128,7 @@ const playerDetails = [
   {
     id: 16,
     name: "Deepka Jha",
-    basePrice: "200",
+    basePrice: 200,
     skills: "BATSMAN | ALL-Rounder",
     availablity: "30 March, 6-13-20 April",
     description: "Good middle-order batsman",
